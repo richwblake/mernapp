@@ -35,10 +35,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     res.status(201).json({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      toekn: generateToken(user._id)
+      token: generateToken(user._id)
     });
   } else {
     res.status(400);
@@ -53,13 +50,11 @@ const loginUser = asyncHandler(async (req, res) => {
 
   if (user && (await bcrypt.compare(password, user.password))) {
     res.status(200).json({
-      id: user.id,
       name: user.name,
-      email: user.email,
       token: generateToken(user._id)
     })
   } else {
-    res.status(400);
+    res.status(400).json({ message: 'Wrong email/password combo :('});
     throw new Error('Invalid email or password');
   }
 });
