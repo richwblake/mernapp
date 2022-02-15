@@ -16,6 +16,10 @@ a {
   color: #000;
 }
 
+#logo {
+  font-size: x-large;
+}
+
 p {
   line-height: 1.7;
 }
@@ -100,6 +104,8 @@ h3 {
 }
 
 .goal .close {
+  font-size: 1rem;
+
   position: absolute;
   top: 10px;
   right: 15px;

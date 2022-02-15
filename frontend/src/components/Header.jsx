@@ -40,7 +40,7 @@ function Header() {
   return (
     <header className='header'>
       <div className='logo'>
-        <Link to='/'>Goali</Link>
+        <Link id='logo' to='/'>Goali</Link>
       </div>
       <ul>
         {displayHeaderButtons()}

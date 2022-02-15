@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import GoalItem from '../components/GoalItem';
 import Spinner from '../components/Spinner';
 import { getGoals } from '../features/goals/goalSlice';
+import GoalForm from '../components/GoalForm';
 
 function Dashboard() {
 
@@ -20,10 +21,13 @@ function Dashboard() {
     }
 
     if (isError) {
-      toast.error(message)
+      toast.error('Failed to create new goal')
     }
 
-    dispatch(getGoals())
+    if (user) {
+      dispatch(getGoals())
+    }
+
   }, [user, isError, message, navigate, dispatch]);
 
   if (!user) {
@@ -49,6 +53,7 @@ function Dashboard() {
         <p>Goals Dashboard</p>
       </section>
       <section className='content'>
+        <GoalForm />
         {showGoals()}
       </section>
     </>
